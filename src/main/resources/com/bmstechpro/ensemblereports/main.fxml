@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #40c4ff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bmstechpro.ensemblereports.MainController">
+   <children>
+      <MenuBar layoutY="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#onLoad" text="Open" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <ImageView fitHeight="241.0" fitWidth="800.0" layoutY="28.0" pickOnBounds="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+         <image>
+            <Image url="@img.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="253.0" fitWidth="800.0" layoutY="279.0" pickOnBounds="true" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="280.0">
+         <image>
+            <Image url="@logs.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lbl" alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="221.0" text="konstantin.staykov@trane.com" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="msgLbl" layoutX="346.0" layoutY="277.0" prefHeight="17.0" prefWidth="435.0" text="message" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+         <padding>
+            <Insets left="10.0" />
+         </padding>
+      </Label>
+      <ProgressBar fx:id="progressBar" layoutX="192.0" layoutY="541.0" prefHeight="20.0" prefWidth="418.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="190.0" />
+   </children>
+</AnchorPane>
