@@ -4,7 +4,7 @@ package com.bmstechpro.ensemblereports;
  * @author Konstantin Staykov
  */
 
-import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import javafx.concurrent.Task;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -17,10 +17,15 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReportLoader {
+public class ReportLoader extends Task<Void> {
     private LocalDateTime localDateTime;
+    private final File dataLogFile;
 
-    public void load(File file) throws IOException, InvalidFormatException {
+    public ReportLoader(File dataLogFile) {
+        this.dataLogFile = dataLogFile;
+    }
+
+    private void load(File file) throws IOException {
         String fileName = file.getName();
         String filePath = file.getParent() + "/" +
                 fileName.replace(".xlsx", "_mod.xlsx");
@@ -66,7 +71,7 @@ public class ReportLoader {
                             if (cellValue.contains("DATE") && cellValue.contains("TIME")) {
                                 String[] split = cellValue.split("\\+");
                                 String dateString = split[0];
-                                String substring = dateString.substring(dateString.indexOf("(")+1, dateString.length() - 1);
+                                String substring = dateString.substring(dateString.indexOf("(") + 1, dateString.length() - 1);
                                 String timeString = split[1];
                                 String substring1 = timeString.substring(5, timeString.length() - 1);
                                 LocalDateTime dateTime = LocalDateTime.parse(substring + " " + substring1, DateTimeFormatter.ofPattern("yyyy,M,d H,m,s"));
@@ -127,4 +132,14 @@ public class ReportLoader {
         }
     }
 
+    @Override
+    protected Void call() throws Exception {
+        if (!isCancelled()) {
+            updateMessage("Converting file...");
+            load(dataLogFile);
+            updateMessage("Report file was generated successfully");
+        }
+
+        return null;
+    }
 }

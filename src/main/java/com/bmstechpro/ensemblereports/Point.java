@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Point {
-    private String pointName;
-    private List<PointRecord> dataLogs = new ArrayList<>();
+    private final String pointName;
+    private final List<PointRecord> dataLogs = new ArrayList<>();
 
     public Point(String pointName) {
         this.pointName = pointName;
