@@ -6,7 +6,7 @@ plugins {
 }
 
 group 'com.bmstechpro'
-version '1.0-SNAPSHOT'
+version '1.1.0'
 
 repositories {
     mavenCentral()
@@ -52,6 +52,21 @@ jlink {
     launcher {
         name = 'ensemble-reports'
     }
+    jpackage {
+        installerOptions = [
+                '--description', 'Ensemble Reports Optimizer by Konstantin Staykov',
+                '--copyright', 'Copyrigth 2023 Konstantin Staykov',
+                '--vendor', 'Konstantin Staykov',
+                '--app-version', '1.1.0',
+//                '--win-per-user-install',
+//                '--win-dir-chooser',
+//                '--win-menu',
+//                '--win-shortcut',
+//                '--type', 'exe'
+        ]
+
+    }
+
 }
 
 jlinkZip {
